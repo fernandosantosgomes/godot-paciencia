@@ -11,6 +11,7 @@ func _ready():
 	mesa.baralho = enbaralhar(mesa.baralho)
 	inicia_mesa_baixo()
 	ajustar_modo_jogo(modo.trez)
+	exibe_cartas(mesa.baralho)
 
 func ajustar_modo_jogo(modo):
 	self.modo_jogo = modo

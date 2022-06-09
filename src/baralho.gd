@@ -1,5 +1,7 @@
 extends Node
 
+#export (PackedScene) var Carta
+
 var Carta = preload("res://src/carta.gd")
 
 var deck
