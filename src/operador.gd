@@ -8,10 +8,10 @@ var modo_jogo# trez ou uma carta(s)
 func _ready():
 	randomize()
 	mesa = preload("res://src/mesa.gd").new()
+	#exibe_cartas(mesa.baralho)
 	mesa.baralho = enbaralhar(mesa.baralho)
 	inicia_mesa_baixo()
 	ajustar_modo_jogo(modo.trez)
-	exibe_cartas(mesa.baralho)
 
 func ajustar_modo_jogo(modo):
 	self.modo_jogo = modo

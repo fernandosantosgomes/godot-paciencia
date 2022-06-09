@@ -2,7 +2,7 @@ extends Node
 
 #export (PackedScene) var Carta
 
-var Carta = preload("res://src/carta.gd")
+var Carta = preload("res://src/carta.tscn")
 
 var deck
 
@@ -20,5 +20,7 @@ func preenche_deck():
 		if chave == 'CURINGA':
 			continue
 		for np in naipe:
-			carta = Carta.new( chave, np)
+			carta = Carta.instance()
+			carta.valor = chave
+			carta.naipe = np
 			deck.append(carta)
