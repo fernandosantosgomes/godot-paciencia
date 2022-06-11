@@ -2,7 +2,7 @@ extends Node
 
 #export (PackedScene) var Carta
 
-var Carta = preload("res://src/carta.tscn")
+var Carta = preload("res://src/baralho/carta/carta.tscn")
 
 var deck
 
