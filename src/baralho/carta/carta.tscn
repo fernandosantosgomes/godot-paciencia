@@ -9,8 +9,8 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Colisão" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisão"]
 scale = Vector2( 6.95094, 9.89074 )
 shape = SubResource( 1 )

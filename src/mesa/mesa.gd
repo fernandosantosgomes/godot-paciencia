@@ -8,7 +8,16 @@ func _init():
 	baralho = preload("res://src/baralho/baralho.gd").new().deck
 	mesa_baixo = []
 	mesa_cima = []
-	#exibe_carta_mesa( "K", "Diamonds", Vector2( 200, 200))
+	coloca_carta_mesa()
+	
+func coloca_carta_mesa():
+	for carta in baralho:
+		carta.position = Vector2( 100, 120)
+		add_child(carta)
+#Toda movimentacao das cartas da mesa deve ser posta 
+#areaves deste metodo.
+func adiciona_mesa_baixo():	
+	pass
 
 func exibe_carta_mesa( valor, naipe, posicao : Vector2):
 	var carta_tmp
@@ -16,5 +25,12 @@ func exibe_carta_mesa( valor, naipe, posicao : Vector2):
 		if valor == carta.valor and naipe == carta.naipe:
 			carta_tmp = carta
 			break
+	
+	for coluna in mesa_baixo:
+		for carta in coluna:
+			if valor == carta.valor and naipe == carta.naipe:
+				carta_tmp = carta
+				break
+			
 	carta_tmp.position = posicao
 	add_child(carta_tmp)
