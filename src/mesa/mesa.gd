@@ -3,12 +3,16 @@ extends Node2D
 var baralho
 var mesa_baixo
 var mesa_cima
+var todas_cartas = []
 
 func _init():
 	baralho = preload("res://src/baralho/baralho.gd").new().deck
 	mesa_baixo = []
 	mesa_cima = []
 	coloca_carta_mesa()
+	todas_cartas.append_array(baralho)
+	todas_cartas.append_array(mesa_baixo)
+	todas_cartas.append_array(mesa_cima)
 	
 func coloca_carta_mesa():
 	for carta in baralho:
@@ -34,3 +38,8 @@ func exibe_carta_mesa( valor, naipe, posicao : Vector2):
 			
 	carta_tmp.position = posicao
 	add_child(carta_tmp)
+	
+func carta_selecionada():
+	for carta in todas_cartas:
+		if carta.selecionada:
+			carta.selecionada = false

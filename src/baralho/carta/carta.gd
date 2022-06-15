@@ -6,30 +6,16 @@ var virada = false
 var cor_atraz
 var textura_desvirada
 var textura_virada
-var mouse_enter = false
+var selecionada
 
-signal entrou_carta
-signal saiu_carta
+var referencia_mesa
 
-func _ready(): 
+func _ready():
+	selecionada = false
 	$Sprite.texture = textura_desvirada
+	referencia_mesa = get_node("../../").mesa
 
-
-func _process(delta):
-	if Input.is_action_pressed("click") and mouse_enter:
-		position = get_global_mouse_position()
-		
-func _on_Coliso_mouse_entered():
-	emit_signal("entrou_carta")
-
-
-func _on_Coliso_mouse_exited():
-	emit_signal("saiu_carta")
-
-
-func _on_Carta_entrou_carta():
-	mouse_enter = true
-
-
-func _on_Carta_saiu_carta():
-	mouse_enter = false
+func _on_Coliso_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		referencia_mesa.carta_selecionada()
+		selecionada = true

@@ -1,10 +1,10 @@
 extends Node
 
-#export (PackedScene) var Carta
-
 var Carta = preload("res://src/baralho/carta/carta.tscn")
 
 var deck
+
+var no_nome = 'baralho'
 
 enum naipe { Hearts, Spades, Diamonds,	Clubs}
 

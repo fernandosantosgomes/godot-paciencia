@@ -12,8 +12,6 @@ func _ready():
 	mesa.baralho = enbaralhar(mesa.baralho)
 	inicia_mesa_baixo()
 	ajustar_modo_jogo(modo.trez)
-	mesa.exibe_carta_mesa( "K", "Diamonds", Vector2( 200, 200))
-	#mesa.exibe_carta_mesa( "Q", "Diamonds", Vector2( 300, 200))
 	add_child(mesa)
 
 func ajustar_modo_jogo(modo):
@@ -53,11 +51,13 @@ func enbaralhar(baralho):
 	return deck_temp
 		
 
+func _input(event):
 	
+	if event is InputEventMouseMotion:
+		for carta_selecionada in mesa.todas_cartas:
+			if carta_selecionada.selecionada:
+				carta_selecionada.position += event.relative
+				
 func exibe_cartas(baralho):
 	for carta in baralho:
 		print( carta.valor, ' ', carta.naipe)
-
-
-func _on_Area2D_mouse_entered():
-	print('ok')
