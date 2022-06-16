@@ -56,7 +56,10 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		for carta_selecionada in mesa.todas_cartas:
 			if carta_selecionada.selecionada:
+				var tamanho_tela = get_viewport_rect().size
 				carta_selecionada.position += event.relative
+				carta_selecionada.position.x = clamp( carta_selecionada.position.x, 80, tamanho_tela.x - 80)
+				carta_selecionada.position.y = clamp( carta_selecionada.position.y, 80, tamanho_tela.y - 80)
 				
 func exibe_cartas(baralho):
 	for carta in baralho:
