@@ -4,15 +4,22 @@ var mesa
 
 var modo = { 'uma': 1, 'trez': 3}
 var modo_jogo# trez ou uma carta(s)
+var versao_mobile = false
 
 func _ready():
 	randomize()
 	mesa = preload("res://src/mesa/mesa.gd").new()
 	#exibe_cartas(mesa.baralho)
 	mesa.baralho = enbaralhar(mesa.baralho)
+	mesa.coloca_carta_mesa(mesa.baralho)
 	inicia_mesa_baixo()
 	ajustar_modo_jogo(modo.trez)
 	add_child(mesa)
+	testes_main()
+	
+func testes_main():
+	var carta = mesa.get_carta('A', 'Clubs')
+	mesa.move_child( carta, mesa.todas_cartas.size()-1)
 
 func ajustar_modo_jogo(modo):
 	self.modo_jogo = modo
@@ -55,7 +62,7 @@ func _input(event):
 	
 	if event is InputEventMouseMotion:
 		for carta_selecionada in mesa.todas_cartas:
-			if carta_selecionada.selecionada and Input.is_action_pressed("click"):
+			if carta_selecionada.selecionada and ( Input.is_action_pressed("click") or versao_mobile):
 				var tamanho_tela = get_viewport_rect().size
 				carta_selecionada.position += event.relative
 				carta_selecionada.position.x = clamp( carta_selecionada.position.x, 80, tamanho_tela.x - 80)

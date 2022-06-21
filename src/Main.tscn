@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/operador.gd" type="Script" id=1]
 [ext_resource path="res://assets/background/pexels-sebastian-voortman-189349.jpg" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 994, 625 )
-scale = Vector2( 0.34478, 0.333337 )
+position = Vector2( 910, 832 )
+scale = Vector2( 0.321175, 0.441408 )
 texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 329, 327 )
+scale = Vector2( 11.2812, 11.2188 )
+texture = ExtResource( 3 )

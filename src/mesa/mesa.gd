@@ -9,13 +9,13 @@ func _init():
 	baralho = preload("res://src/baralho/baralho.gd").new().deck
 	mesa_baixo = []
 	mesa_cima = []
-	coloca_carta_mesa()
+	#coloca_carta_mesa()
 	todas_cartas.append_array(baralho)
 	todas_cartas.append_array(mesa_baixo)
 	todas_cartas.append_array(mesa_cima)
 	
-func coloca_carta_mesa():
-	for carta in baralho:
+func coloca_carta_mesa(cartas):
+	for carta in cartas:
 		carta.position = Vector2( 100, 120)
 		add_child(carta)
 #Toda movimentacao das cartas da mesa deve ser posta 
@@ -43,3 +43,8 @@ func carta_selecionada():
 	for carta in todas_cartas:
 		if carta.selecionada:
 			carta.selecionada = false
+
+func get_carta( valor, naipe):
+	for carta in todas_cartas:
+		if valor == carta.valor and naipe == carta.naipe:
+			return carta
